@@ -12,7 +12,7 @@
     <title>Trang chủ quản trị</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="./vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,8 @@
     <!-- end font -->
 
     <!-- Custom styles for this template-->
-    <link href="/admin/css/sb-admin-2.css" rel="stylesheet">
+    <link href="./css/sb-admin-2.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -56,39 +57,34 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Bài viết</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="post-pending.html">Bài viết chờ duyệt</a>
-                        <a class="collapse-item" href="post-active.html">Bài viết đã duyệt</a><a class="collapse-item"
-                            href="add-post.html">Thêm bài viết</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="category.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Danh mục bài viết</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="account.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Tài khoản</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="role.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Vai trò</span></a>
-            </li>
-
+        <li class="nav-item">
+            <a
+              class="nav-link collapsed"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-fw fa-cog"></i>
+              <span>Bài viết</span>
+            </a>
+            <div
+              id="collapseTwo"
+              class="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordionSidebar"
+            >
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="post-pending.html"
+                  >Bài viết chờ duyệt</a
+                >
+                <a class="collapse-item" href="post-active.html"
+                  >Bài viết đã duyệt</a
+                ><a class="collapse-item" href="add-post.html">Thêm bài viết</a>
+              </div>
+            </div>
+          </li>
         </ul>
         <!-- End of Sidebar -->
 
@@ -96,21 +92,64 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
+            <div class="container-fluid pt-5">
 
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Bài viết chờ duyệt</h1>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="postTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Id bài đăng</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Thời gian</th>
+                                        <th>Id tài khoản</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="postTableBody">
+
+                                </tbody>
+                            </table>
+                            <nav aria-label="..." class="mt-5 pagination-custom">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i
+                                                class="fas fa-solid fa-chevron-left"></i></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="./news.html?pageNumber=1&pageSize=6">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="./news.html?pageNumber=2&pageSize=6">2 <span
+                                                class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fas fa-solid fa-chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <!-- /.container-fluid -->
-
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Trang quản trị của web tech.</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
         </div>
         <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Trang quản trị của web tech.</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
@@ -144,22 +183,226 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/admin/js/sb-admin-2.min.js"></script>
+    <script src="./js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="/admin/vendor/chart.js/Chart.min.js"></script>
+    <script src="./vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/admin/js/demo/chart-area-demo.js"></script>
-    <script src="/admin/js/demo/chart-pie-demo.js"></script>
+    <script src="./js/demo/chart-area-demo.js"></script>
+    <script src="./js/demo/chart-pie-demo.js"></script>
+    <script>
+        // Kiểm tra nếu không có userInfo trong localStorage
+        if (!localStorage.getItem("userInfo")) {
+          // Chuyển hướng đến trang đăng nhập
+          window.location.href = "login.html";
+        } else {
+          // Lấy thông tin người dùng từ localStorage
+          const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+          const accessRight = userInfo.accessRight;
+          const role = userInfo.role;
+      
+          // Kiểm tra vai trò của người dùng và chuyển hướng tương ứng
+          if (role === "admin2") {
+            // Nếu là news editor, chỉ cho phép vào các trang admin
+            if (
+              window.location.href !== "http://127.0.0.1:8081/admin/add-post.html" &&
+              window.location.href !== "http://127.0.0.1:8081/admin/index.html"
+            ) {
+              // Thông báo và chuyển hướng
+              Swal.fire({
+                icon: "error",
+                title: "Truy cập bị từ chối",
+                text: "Bạn không có quyền truy cập vào trang này!",
+                customClass: {
+                  popup: "small-alert",
+                },
+              }).then(() => {
+                window.location.href = "index.html";
+              });
+            }
+          } else if (role === "content moderation") {
+            // Nếu là content moderation, cho phép vào tất cả các trang
+            // Không cần làm gì cả
+          }
+        }
+      </script>
+      
+    <script>
+        function loadData(pageNumber, pageSize) {
+            fetch(`http://localhost:8080/api/post/getByStatus?status=pending&pageNumber=${pageNumber}&pageSize=${pageSize}`)
+                .then(response => response.json())
+                .then(data => {
+                    const postTableBody = document.getElementById('postTableBody');
+                    postTableBody.innerHTML = '';
+                    if (data && data.content.length > 0) {
+                        data.content.forEach(post => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                        <td>${post.idPost}</td>
+                        <td>${post.title}</td>
+                        <td>${post.timeline}</td>
+                        <td>${post.idAccount}</td>
+                        <td>
+        <button class="btn btn-primary approve-btn" data-id="${post.idPost}">Duyệt bài</button>
+        <button class="btn btn-danger reject-btn" data-id="${post.idPost}">Từ chối bài</button>
+    </td>
+        </td>
+                    `;
+                            postTableBody.appendChild(row);
+                        });
+                    } else {
+                        postTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No data available</td></tr>';
+                    }
 
+                    // Update pagination
+                    updatePagination(pageNumber, pageSize, data.total);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const postTableBody = document.getElementById('postTableBody');
+                    postTableBody.innerHTML = '<tr><td colspan="4" class="text-center">Failed to load data</td></tr>';
+                });
+        }
+
+
+        function calculateTotalPages(totalPosts, pageSize) {
+            return Math.ceil(totalPosts / pageSize);
+        }
+        function createPaginationLinks(totalPages, currentPage, pageSize) {
+            const paginationContainer = document.querySelector('.pagination');
+            paginationContainer.innerHTML = '';
+
+            // Tạo nút 'Previous'
+            const previousButton = document.createElement('li');
+            previousButton.classList.add('page-item');
+            if (currentPage === 1) {
+                previousButton.classList.add('disabled');
+            }
+            const previousLink = document.createElement('a');
+            previousLink.classList.add('page-link');
+            previousLink.href = `./post-pending.html?pageNumber=${currentPage - 1}&pageSize=${pageSize}`;
+            previousLink.setAttribute('tabindex', '-1');
+            previousLink.innerHTML = '<i class="fas fa-solid fa-chevron-left"></i>';
+            previousButton.appendChild(previousLink);
+            paginationContainer.appendChild(previousButton);
+
+            for (let i = 1; i <= totalPages; i++) {
+                (function (pageNumber) {
+                    const pageButton = document.createElement('li');
+                    pageButton.classList.add('page-item');
+                    if (pageNumber === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    const pageLink = document.createElement('a');
+                    pageLink.classList.add('page-link');
+                    pageLink.href = `./post-pending.html?pageNumber=${pageNumber}&pageSize=${pageSize}`;
+                    pageLink.textContent = pageNumber;
+                    pageLink.addEventListener('click', function () {
+                        loadData(pageNumber, pageSize);
+                    });
+                    pageButton.appendChild(pageLink);
+                    paginationContainer.appendChild(pageButton);
+                })(i);
+            }
+
+
+            // Tạo nút 'Next'
+            const nextButton = document.createElement('li');
+            nextButton.classList.add('page-item');
+            if (currentPage === totalPages) {
+                nextButton.classList.add('disabled');
+            }
+            const nextLink = document.createElement('a');
+            nextLink.classList.add('page-link');
+            nextLink.href = `./post-pending.html?pageNumber=${currentPage + 1}&pageSize=${pageSize}`;
+            nextLink.innerHTML = '<i class="fas fa-solid fa-chevron-right"></i>';
+            nextButton.appendChild(nextLink);
+            paginationContainer.appendChild(nextButton);
+        }
+
+        function updatePagination(pageNumber, pageSize, totalPosts) {
+            const totalPages = calculateTotalPages(totalPosts, pageSize);
+            createPaginationLinks(totalPages, pageNumber, pageSize);
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageNumber = parseInt(urlParams.get("pageNumber") || 1);
+        const pageSize = parseInt(urlParams.get("pageSize") || 6);
+        loadData(pageNumber, pageSize);
+
+    </script>
+    <script>
+
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('approve-btn')) {
+        const postId = e.target.getAttribute('data-id');
+        Swal.fire({
+            title: 'Bạn có chắc chắn muốn duyệt bài này?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Duyệt',
+            cancelButtonText: 'Hủy',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:8080/api/post/${postId}/approve?status=approve`, {
+                    method: 'PUT',
+                })
+                .then(response => response)
+                .then(data => {
+                    loadData(pageNumber, pageSize);
+                    Swal.fire('Duyệt thành công!', '', 'success');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire('Đã xảy ra lỗi!', '', 'error');
+                });
+            }
+        });
+    }
+});
+
+    </script>
+    <script>
+        document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('reject-btn')) {
+        const postId = e.target.getAttribute('data-id');
+        Swal.fire({
+            title: 'Bạn có chắc chắn muốn từ chối bài này?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Từ chối',
+            cancelButtonText: 'Hủy',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:8080/api/post/${postId}/approve?status=reject`, {
+                    method: 'PUT',
+                })
+                .then(response => response)
+                .then(data => {
+                    loadData(pageNumber, pageSize);
+                    Swal.fire('Từ chối thành công!', '', 'success');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire('Đã xảy ra lỗi!', '', 'error');
+                });
+            }
+        });
+    }
+});
+    </script>
 </body>
 
 </html>

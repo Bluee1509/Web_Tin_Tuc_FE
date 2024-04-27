@@ -1,183 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tin tức</title>
     <!-- start font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- end font -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <!-- start icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <!-- end icon -->
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/news.css">
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/news.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header id="myHeader">
-        <div class="container">
-            <div class="header__logo">
-                <a href="/">
-                    <span>tech.</span>
-                </a>
-            </div>
-            <div id="burger-menu">
-                <span></span>
-            </div>
-
-            <div id="menu">
-                <ul>
-                    <li><a href="/">Trang chủ</a></li>
-                    <li><a href="/price.html">Bảng giá</a></li>
-                    <li><a href="/about.html">Về chúng tôi</a></li>
-                    <li><a href="/news.html">Tin tức</a></li>
-                </ul>
-            </div>
-            <div class="header__nav">
-                <ul>
-                    <li>
-                        <a href="/">Trang chủ</a>
-                    </li>
-                    <li>
-                        <a href="/price.html">Bảng giá</a>
-                    </li>
-                    <li>
-                        <a href="/about.html">Về chúng tôi</a>
-                    </li>
-                    <li>
-                        <a href="/news.html">Tin tức</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <div class="header__logo">
+          <a href="./">
+            <span>tech.</span>
+          </a>
         </div>
+        <div id="burger-menu">
+          <span></span>
+        </div>
+
+        <div id="menu">
+          <ul>
+            <li><a href="./">Trang chủ</a></li>
+            <li><a href="./price.html">Bảng giá</a></li>
+            <li><a href="./about.html">Về chúng tôi</a></li>
+            <li><a href="./news.html">Tin tức</a></li>
+          </ul>
+        </div>
+        <div class="header__nav">
+          <ul>
+            <li>
+              <a href="./">Trang chủ</a>
+            </li>
+            <li>
+              <a href="./price.html">Bảng giá</a>
+            </li>
+            <li>
+              <a href="./about.html">Về chúng tôi</a>
+            </li>
+            <li>
+              <a href="./news.html">Tin tức</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
     <section class="news">
-        <div class="new__bg"></div>
-        <div class="container">
-            <h2>TIN TỨC</h2>
-            <p>Các tin tức và sự kiện tại tech mà bạn có thể xem qua</p>
-            <div class="row">
-                <div class="col-12 col-lg-4">
-                    <div class="news__item">
-                        <img src="assets/Thumbnail VN.jpg" alt="">
-                        <h3>TECH TỰ HÀO 02 NĂM LIỀN VINH DANH “NƠI LÀM VIỆC TUYỆT VỜI”</h3>
-                        <span>02:00 PM | 19/03/2024</span>
-                        <p>2 năm liên tiếp GPTW vinh danh VNG "Nơi làm việc tuyệt vời" với môi trường truyền cảm hứng và
-                            đề cao giá trị con người.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="news__item">
-                        <img src="assets/vng-bao-mat-3.jpg" alt="">
-                        <h3>TECH phát triển công nghệ bảo mật cho doanh nghiệp Việt</h3>
-                        <span>02:00 PM | 19/03/2024</span>
-                        <p>VNG Digital Business phát triển các sản phẩm và công nghệ Bảo mật, hỗ trợ các doanh nghiệp
-                            Việt Nam trên hành trình chuy
-                            ...</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="news__item">
-                        <img src="assets/vng-doi-moi-cong-nghe.jpg" alt="">
-                        <h3>Những đổi mới công nghệ của TECH giúp cuộc sống tốt đẹp hơn</h3>
-                        <span>02:00 PM | 19/03/2024</span>
-                        <p>TECH liên tục đẩy mạnh các đổi mới công nghệ trong nhiều lĩnh vực, góp phần nâng cao chất
-                            lượng cuộc sống cho cộng đồng.</p>
-                    </div>
-                </div>
-            </div>
-            <nav aria-label="..." class="mt-5 pagination-custom">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
-                    </li>
-                </ul>
-            </nav>
-
+      <div class="new__bg"></div>
+      <div class="container">
+        <h2>TIN TỨC</h2>
+        <p>Các tin tức và sự kiện tại tech mà bạn có thể xem qua</p>
+        <div class="row">
+          
         </div>
+        <nav aria-label="..." class="mt-5 pagination-custom">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1"
+                ><i class="fa-solid fa-chevron-left"></i
+              ></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="./news.html?pageNumber=1&pageSize=6"
+                >1</a
+              >
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="./news.html?pageNumber=2&pageSize=6"
+                >2 <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#"
+                ><i class="fa-solid fa-chevron-right"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </section>
     <section class="cta">
-        <div class="container">
-            <div>
-                <h2>Đăng kí để nhận ngay 14 ngày sử dụng miễn phí</h2>
-                <p>Trải nghiệm đầy đủ các tính năng
-                </p>
-            </div>
-            <button>Bắt đầu ngay</button>
+      <div class="container">
+        <div>
+          <h2>Đăng kí để nhận ngay 14 ngày sử dụng miễn phí</h2>
+          <p>Trải nghiệm đầy đủ các tính năng</p>
         </div>
+        <button>Bắt đầu ngay</button>
+      </div>
     </section>
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="footer__item">
-                        <div class="header__logo__footer">
-                            <span>tech.</span>
-                        </div>
-                        <p class="footer__sub">Mua Hosting giá rẻ khởi chạy ngay dự án của bạn với mức chi phí thấp nhất
-                            nhưng tích hợp công
-                            nghệ hiện đại nhất, NVMe
-                            Web Hosting tại TinoHost tự tin khởi chạy mọi dự án website của bạn.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2">
-                    <div class="footer__item">
-                        <h3>Về tech.</h3>
-                        <ul>
-                            <li><span>Sứ mệnh</span></li>
-                            <li><span>Giá trị cốt lỏi</span></li>
-                            <li><span>Cột mốc chính</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2">
-                    <div class="footer__item">
-                        <h3>Tin tức</h3>
-                        <ul>
-                            <li><span>Tin tức mới nhất</span></li>
-                            <li><span>Tin tức nổi bật</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-2">
-                    <div class="footer__item">
-                        <h3>Liên hệ</h3>
-                        <ul>
-                            <li><span>Phone : 099******</span></li>
-                            <li><span>Mail : tech@gmail.com</span></li>
-                            <li><span>Văn phòng : 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT</span></li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="footer__item">
+              <div class="header__logo__footer">
+                <span>tech.</span>
+              </div>
+              <p class="footer__sub">
+                Mua Hosting giá rẻ khởi chạy ngay dự án của bạn với mức chi phí
+                thấp nhất nhưng tích hợp công nghệ hiện đại nhất, NVMe Web
+                Hosting tại TinoHost tự tin khởi chạy mọi dự án website của bạn.
+              </p>
             </div>
-            <div class="line"></div>
-            <p>© 2024 tech. All Rights Reserved</p>
+          </div>
+          <div class="col-12 col-lg-2">
+            <div class="footer__item">
+              <h3>Về tech.</h3>
+              <ul>
+                <li><span>Sứ mệnh</span></li>
+                <li><span>Giá trị cốt lỏi</span></li>
+                <li><span>Cột mốc chính</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-lg-2">
+            <div class="footer__item">
+              <h3>Tin tức</h3>
+              <ul>
+                <li><span>Tin tức mới nhất</span></li>
+                <li><span>Tin tức nổi bật</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-lg-2">
+            <div class="footer__item">
+              <h3>Liên hệ</h3>
+              <ul>
+                <li><span>Phone : 099******</span></li>
+                <li><span>Mail : tech@gmail.com</span></li>
+                <li>
+                  <span
+                    >Văn phòng : 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <div class="line"></div>
+        <p>© 2024 tech. All Rights Reserved</p>
+      </div>
     </footer>
-</body>
-<script src="js/scroll_header.js"></script>
-<script src="js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  </body>
+  <script src="js/scroll_header.js"></script>
+  <script src="js/main.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    let totalPage = 0;
+    async function fetchPosts(pageNumber, pageSize) {
+      const response = await fetch(
+        `http://localhost:8080/api/post/getByStatus?status=approve&pageNumber=${pageNumber}&pageSize=${pageSize}`
+      );
+      const data = await response.json();
+      totalPage = data.total;
+      console.log(data);
 
+      return data.content;
+    }
+    async function displayPosts() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pageNumber = parseInt(urlParams.get("pageNumber") || 1);
+      const pageSize = parseInt(urlParams.get("pageSize") || 6);
+      const posts = await fetchPosts(pageNumber, pageSize);
+      const newsSection = document.querySelector(".news .container .row");
+
+      posts.forEach((post) => {
+        const newsItem = document.createElement("div");
+        newsItem.classList.add("news__item");
+        newsItem.classList.add("col-4");
+
+        const postLink = document.createElement("a");
+        postLink.href = `detail-post.html?id=${post.idPost}`;
+
+        const imageElement = document.createElement("img");
+        imageElement.src = `http://localhost:8080${post.thumbnailUrl}`;
+        newsItem.appendChild(imageElement);
+
+        const titleElement = document.createElement("h3");
+        titleElement.textContent = post.title;
+        postLink.appendChild(titleElement);
+
+        const spanElement = document.createElement("span");
+        spanElement.textContent = post.timeline;
+        newsItem.appendChild(spanElement);
+
+        newsItem.appendChild(postLink);
+
+        /* const contentElement = document.createElement('p');
+            contentElement.innerHTML = post.content;
+            newsItem.appendChild(contentElement); */
+
+        newsSection.appendChild(newsItem);
+      });
+      updatePagination(pageNumber, pageSize);
+    }
+
+    function updatePagination(currentPage) {
+      const paginationElement = document.querySelector(".pagination");
+      const pageItems = paginationElement.querySelectorAll(".page-item");
+
+      pageItems.forEach((pageItem) => {
+        pageItem.classList.remove("active");
+      });
+
+      const activePageItem = paginationElement.querySelector(
+        `.page-item:nth-child(${currentPage + 1})`
+      );
+      if (activePageItem) {
+        activePageItem.classList.add("active");
+      }
+    }
+
+    displayPosts();
+  </script>
+  <script>
+
+    function calculateTotalPages(totalPosts, pageSize) {
+      return Math.ceil(totalPosts / pageSize);
+    }
+
+    function createPaginationLinks(totalPages, currentPage, pageSize) {
+      const paginationContainer = document.querySelector(".pagination");
+      paginationContainer.innerHTML = "";
+
+      const previousButton = document.createElement("li");
+      previousButton.classList.add("page-item");
+      if (currentPage === 1) {
+        previousButton.classList.add("disabled");
+      }
+      const previousLink = document.createElement("a");
+      previousLink.classList.add("page-link");
+      previousLink.href = `./news.html?pageNumber=${
+        currentPage - 1
+      }&pageSize=${pageSize}`;
+      previousLink.setAttribute("tabindex", "-1");
+      previousLink.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
+      previousButton.appendChild(previousLink);
+      paginationContainer.appendChild(previousButton);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement("li");
+        pageButton.classList.add("page-item");
+        if (i === currentPage) {
+          pageButton.classList.add("active");
+        }
+        const pageLink = document.createElement("a");
+        pageLink.classList.add("page-link");
+        pageLink.href = `./news.html?pageNumber=${i}&pageSize=${pageSize}`;
+        pageLink.textContent = i;
+        pageButton.appendChild(pageLink);
+        paginationContainer.appendChild(pageButton);
+      }
+
+      const nextButton = document.createElement("li");
+      nextButton.classList.add("page-item");
+      if (currentPage === totalPages) {
+        nextButton.classList.add("disabled");
+      }
+      const nextLink = document.createElement("a");
+      nextLink.classList.add("page-link");
+      nextLink.href = `./news.html?pageNumber=${
+        currentPage + 1
+      }&pageSize=${pageSize}`;
+      nextLink.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
+      nextButton.appendChild(nextLink);
+      paginationContainer.appendChild(nextButton);
+    }
+
+    async function updatePagination(pageNumber, pageSize) {
+      const response = await fetchPosts(pageNumber, pageSize);
+      const totalPosts = totalPage;
+      const totalPages = calculateTotalPages(totalPosts, pageSize);
+      createPaginationLinks(totalPages, pageNumber, pageSize);
+    }
+  </script>
 </html>

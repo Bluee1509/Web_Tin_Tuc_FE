@@ -68,41 +68,41 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Bài viết</span>
-          </a>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="post-pending.html"
-                >Bài viết chờ duyệt</a
-              >
-              <a class="collapse-item" href="post-active.html"
-                >Bài viết đã duyệt</a
-              ><a class="collapse-item" href="add-post.html">Thêm bài viết</a>
+            <a
+              class="nav-link collapsed"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-fw fa-cog"></i>
+              <span>Bài viết</span>
+            </a>
+            <div
+              id="collapseTwo"
+              class="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordionSidebar"
+            >
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="post-pending.html"
+                  >Bài viết chờ duyệt</a
+                >
+                <a class="collapse-item" href="post-active.html"
+                  >Bài viết đã duyệt</a
+                ><a class="collapse-item" href="add-post.html">Thêm bài viết</a>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-      <!-- End of Sidebar -->
+          </li>
+        </ul>
+        <!-- End of Sidebar -->
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div class="container mt-5">
-          <h2>Thêm bài đăng</h2>
+          <h2>Sửa bài đăng</h2>
           <form id="postForm">
             <div class="form-group">
               <label for="title">Tiêu đề:</label>
@@ -127,7 +127,7 @@
                 accept="image/*"
               />
             </div>
-            <button type="submit" class="btn btn-primary">Thêm bài đăng</button>
+            <button type="submit" class="btn btn-primary">Edit bài đăng</button>
           </form>
         </div>
         <!-- End of Main Content -->
@@ -243,12 +243,15 @@
             });
           }
         } else if (role === "content moderation") {
+          // Nếu là content moderation, cho phép vào tất cả các trang
+          // Không cần làm gì cả
         }
       }
     </script>
     
 
     <script>
+        let postId
       tinymce.init({
         selector: "textarea",
         plugins:
@@ -265,6 +268,18 @@
           respondWith.string(() =>
             Promise.reject("See docs to implement AI Assistant")
           ),
+        init_instance_callback: function (editor) {
+          const urlParams = new URLSearchParams(window.location.search);
+          postId = urlParams.get("id");
+
+          fetch(`http://localhost:8080/api/post/${postId}`)
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("title").value = data.title;
+              editor.setContent(data.content);
+            })
+            .catch((error) => console.error("Error:", error));
+        },
       });
 
       document
@@ -293,21 +308,20 @@
           formData.append("thumbnail", thumbnailFile);
 
           console.log(formData);
-          fetch("http://localhost:8080/api/post", {
-            method: "POST",
+          fetch(`http://localhost:8080/api/post/${postId}`, {
+            method: "PUT",
             body: formData,
           })
             .then((response) => {
               if (!response.ok) {
                 throw new Error("Failed to add post.");
               }
-              console.log(response);
             })
             .then((data) => {
               Swal.fire({
                 icon: "success",
-                title: "Đăng bài thành công",
-                text: "Chúc mừng bạn đã đăng bài thành công!",
+                title: "Cập nhật bài đăng thành công",
+                text: "Bài đăng đã được cập nhật thành công!",
                 customClass: {
                   popup: "small-alert",
                 },
