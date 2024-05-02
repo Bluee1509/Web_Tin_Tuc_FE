@@ -28,7 +28,6 @@
 
     .comment-item {
         margin-bottom: 20px;
-        border: 1px solid #ccc;
         padding: 10px;
     }
 
@@ -40,13 +39,49 @@
     .comment-item .content {
         margin-left: 20px;
     }
+
+    .comment-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .comment-item {
+        margin-bottom: 20px;
+    }
+
+    .reply-button {
+        cursor: pointer;
+    }
+
+    .reply-list {
+        list-style-type: none;
+        padding-left: 0;
+        padding-top: 10px;
+        border-left: 1px solid gray;
+        margin-left: 20px;
+        padding-left: 20px;
+    }
+
+    .reply-item {
+        margin-top: 10px;
+    }
+
+    .comment-item-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .content-comment{
+        padding-left: 25px;
+    }
 </style>
+
 <body>
     <header id="myHeader">
         <div class="container">
             <div class="header__logo">
                 <a href="./">
-                    <span>tech.</span>
+                    <span>SKYNET</span>
                 </a>
             </div>
             <div id="burger-menu">
@@ -81,14 +116,14 @@
     </header>
     <section class="news">
         <div class="new__bg"></div>
-        
+
         </div>
     </section>
     <section class="detail-post">
         <div class="container">
             <h2 class="detail-post__title"></h2>
-                <p class="detail-post__timeline"></p>
-                <div class="detail-post__content"></div>
+            <p class="detail-post__timeline"></p>
+            <div class="detail-post__content"></div>
         </div>
     </section>
     <section class="comments mt-5">
@@ -104,7 +139,7 @@
                     <label for="comment">Bình luận của bạn:</label>
                     <textarea class="form-control" id="comment" rows="3" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Gửi</button>
+                <button type="submit" class="btn btn-primary mt-3">Gửi</button>
             </form>
             <h3 class="mb-3 mt-5">Bình luận</h3>
             <ul class="comment-list">
@@ -112,8 +147,8 @@
             </ul>
         </div>
     </section>
-    
-    <footer>
+
+    <footer class="footer-primary">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -172,76 +207,47 @@
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');
-
-        async function fetchPostDetails() {
-            const response = await fetch(`http://localhost:8080/api/post/${postId}`);
-            const data = await response.json();
-            return data;
-        }
-
-        async function displayPostDetails() {
-            const post = await fetchPostDetails();
-
-            console.log(post)
-
-            const titleElement = document.querySelector('.detail-post__title');
-            titleElement.textContent = post.title;
-
-
-            const timelineElement = document.querySelector('.detail-post__timeline');
-            timelineElement.textContent = post.timeline;
-
-            const contentElement = document.querySelector('.detail-post__content');
-            contentElement.innerHTML = post.content; 
-        }
-        async function fetchComments() {
-            const response = await fetch(`http://localhost:8080/api/comment/${postId}`);
-            const data = await response.json();
-            return data;
-        }
-
-        async function displayComments() {
-            const comments = await fetchComments();
-            const commentList = document.querySelector('.comment-list');
-
-            commentList.innerHTML = ''; // Clear existing comments
-
-            comments.forEach(comment => {
-                const li = document.createElement('li');
-                li.classList.add('comment-item');
-
-                const userSpan = document.createElement('span');
-                userSpan.classList.add('user');
-                userSpan.textContent = comment.nameuser;
-
-                const contentSpan = document.createElement('span');
-                contentSpan.classList.add('content');
-                contentSpan.textContent = comment.content;
-
-                li.appendChild(userSpan);
-                li.appendChild(contentSpan);
-
-                commentList.appendChild(li);
-            });
-        }
-
-
-        displayPostDetails();
-        displayComments();
-    </script>
 <script>
-    document.getElementById("commentForm").addEventListener("submit", function(event) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+
+    async function fetchPostDetails() {
+        const response = await fetch(`http://localhost:8080/api/post/${postId}`);
+        const data = await response.json();
+        return data;
+    }
+
+    async function displayPostDetails() {
+        const post = await fetchPostDetails();
+
+        console.log(post)
+
+        const titleElement = document.querySelector('.detail-post__title');
+        titleElement.textContent = post.title;
+
+
+        const timelineElement = document.querySelector('.detail-post__timeline');
+        timelineElement.textContent = post.timeline;
+
+        const contentElement = document.querySelector('.detail-post__content');
+        contentElement.innerHTML = post.content;
+    }
+    async function fetchComments() {
+        const response = await fetch(`http://localhost:8080/api/comment/${postId}`);
+        const data = await response.json();
+        return data;
+    }
+
+    displayPostDetails();
+</script>
+<script>
+    document.getElementById("commentForm").addEventListener("submit", function (event) {
         event.preventDefault();
 
-        // Lấy dữ liệu từ các trường nhập liệu
         const postId = getUrlParam('id');
         const nameuser = document.getElementById('username').value;
         const content = document.getElementById('comment').value;
 
-        // Tạo object chứa dữ liệu bình luận
         const commentData = {
             "idPost": postId,
             "nameuser": nameuser,
@@ -255,26 +261,24 @@
             },
             body: JSON.stringify(commentData)
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to add comment.");
-            }
-            console.log(response);
-            // Hiển thị thông báo thành công
-            Swal.fire({
-                icon: 'success',
-                title: 'Bình luận đã được gửi thành công!',
-                showConfirmButton: false,
-                timer: 1500
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to add comment.");
+                }
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bình luận đã được gửi thành công!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                document.getElementById("commentForm").reset();
+                displayComments();
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Có lỗi xảy ra khi gửi bình luận.");
             });
-            // Đặt lại biểu mẫu
-            document.getElementById("commentForm").reset();
-            displayComments();
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Có lỗi xảy ra khi gửi bình luận.");
-        });
     });
 
 
@@ -282,6 +286,198 @@
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(paramName);
     }
+</script>
+<script>
+
+    function createReplyInput(commentId) {
+        const usernameInput = document.createElement('input');
+        usernameInput.setAttribute('type', 'text');
+        usernameInput.setAttribute('placeholder', 'Tên');
+        usernameInput.setAttribute('id', 'replyUsername');
+        usernameInput.classList.add('form-control', 'reply-username', 'mb-2', 'mt-3');
+
+        const replyInput = document.createElement('input');
+        replyInput.setAttribute('type', 'text');
+        replyInput.setAttribute('placeholder', 'Nhập reply của bạn');
+        replyInput.setAttribute('id', 'replyContent');
+        replyInput.setAttribute('idCmtParent', commentId);
+        replyInput.classList.add('form-control', 'reply-input', 'mb-3');
+
+
+        const replyForm = document.createElement('form');
+        replyForm.classList.add('reply-form');
+        replyForm.appendChild(usernameInput);
+        replyForm.appendChild(replyInput);
+
+        const sendButton = document.createElement('button');
+        sendButton.setAttribute('type', 'button');
+        sendButton.textContent = 'Gửi';
+        sendButton.classList.add('btn', 'btn-primary', 'reply-send-button');
+
+        sendButton.addEventListener('click', function () {
+            const username = document.getElementById('replyUsername').value;
+            const replyContent = document.getElementById('replyContent').value;
+
+            sendReply(username, commentId, replyContent);
+
+            replyForm.remove();
+        });
+
+        replyForm.appendChild(sendButton);
+
+        return replyForm;
+    }
+
+
+    function sendReply(username, parentCommentId, replyContent) {
+        const postId = getUrlParam('id');
+
+        const replyData = {
+            "idPost": postId,
+            "nameuser": username,
+            "content": replyContent,
+            "idCmtParent": parentCommentId
+        };
+
+        fetch("http://localhost:8080/api/comment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(replyData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to add reply.");
+                }
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Reply đã được gửi thành công!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                displayComments();
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Có lỗi xảy ra khi gửi reply.");
+            });
+    }
+
+    async function fetchReplies(commentId) {
+        try {
+            const response = await fetch(`http://localhost:8080/api/comment/reply/${commentId}`);
+
+            if (!response.ok) {
+                throw new Error('Không thể tải dữ liệu.');
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Lỗi khi tải dữ liệu:', error.message);
+            return null;
+        }
+    }
+
+
+    async function displayComments() {
+        const comments = await fetchComments();
+        const commentList = document.querySelector('.comment-list');
+
+        commentList.innerHTML = '';
+        const filteredComments = comments.filter(comment => comment.idCmtParent == null).reverse();
+
+
+        for (const comment of filteredComments) {
+            const li = document.createElement('li');
+            li.classList.add('comment-item');
+
+            const div = document.createElement('div');
+            div.classList.add('comment-item-wrap');
+
+            const anonymousAvatar = document.createElement('img');
+            anonymousAvatar.src = '/assets/avatar.jpg';
+            anonymousAvatar.classList.add('rounded-circle', 'shadow-1-strong');
+            anonymousAvatar.width = 35;
+            anonymousAvatar.height = 35;
+            div.appendChild(anonymousAvatar);
+
+            const userSpan = document.createElement('span');
+            userSpan.classList.add('user');
+            userSpan.textContent = comment.nameuser;
+            div.appendChild(userSpan);
+
+            const contentSpan = document.createElement('span');
+            contentSpan.classList.add('content', 'content-comment');
+            contentSpan.textContent = comment.content;
+
+            const replyButton = document.createElement('a');
+            replyButton.innerHTML = '<i class="fa-solid fa-reply"></i>';
+            replyButton.classList.add('reply-button');
+            div.appendChild(replyButton);
+
+            replyButton.addEventListener('click', function () {
+                const existingReplyForm = li.querySelector('.reply-form');
+                if (!existingReplyForm) {
+                    const replyForm = createReplyInput(comment.idCmt);
+                    li.appendChild(replyForm);
+                } else {
+                    existingReplyForm.remove();
+                }
+            });
+
+            const replies = await fetchReplies(comment.idCmt);
+
+            if (!replies || replies.length === 0) {
+                li.appendChild(div);
+                li.appendChild(contentSpan);
+                commentList.appendChild(li);
+                continue;
+            }
+
+            const replyList = document.createElement('ul');
+            replyList.classList.add('reply-list');
+
+            replies.forEach(reply => {
+                const divReply = document.createElement('div');
+                divReply.classList.add('comment-item-wrap');
+
+                const anonymousAvatarReply = document.createElement('img');
+                anonymousAvatarReply.src = '/assets/avatar.jpg';
+                anonymousAvatarReply.classList.add('rounded-circle', 'shadow-1-strong');
+                anonymousAvatarReply.width = 35;
+                anonymousAvatarReply.height = 35;
+                divReply.appendChild(anonymousAvatarReply);
+
+                const replyItem = document.createElement('li');
+                replyItem.classList.add('reply-item');
+
+                const replyUserSpan = document.createElement('span');
+                replyUserSpan.classList.add('user');
+                replyUserSpan.textContent = reply.nameuser;
+                divReply.appendChild(replyUserSpan)
+
+                const replyContentSpan = document.createElement('span');
+                replyContentSpan.classList.add('content', 'content-comment');
+                replyContentSpan.textContent = reply.content;
+
+                replyItem.appendChild(divReply);
+                replyItem.appendChild(replyContentSpan);
+                replyList.appendChild(replyItem);
+            });
+
+            li.appendChild(div);
+            li.appendChild(contentSpan);
+            li.appendChild(replyList);
+
+            commentList.appendChild(li);
+        }
+    }
+
+    displayComments();
 </script>
 
 </html>
