@@ -123,9 +123,9 @@
         })
           .then((response) => {
             if (response.ok) {
-              return response.json(); // Trả về dữ liệu JSON từ phản hồi
+              return response.json(); 
             } else {
-              throw new Error("Unauthorized"); // Ném ra lỗi nếu phản hồi không thành công
+              throw new Error("Unauthorized"); 
             }
           })
           .then((data) => {

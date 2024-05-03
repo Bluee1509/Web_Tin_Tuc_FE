@@ -71,7 +71,7 @@
       <div class="new__bg"></div>
       <div class="container">
         <h2>TIN TỨC</h2>
-        <p>Các tin tức và sự kiện tại tech mà bạn có thể xem qua</p>
+        <p>Các tin tức và sự kiện tại SKYNET mà bạn có thể xem qua</p>
         <div class="row">
           
         </div>
@@ -116,7 +116,7 @@
           <div class="col-lg-6">
             <div class="footer__item">
               <div class="header__logo__footer">
-                <span>tech.</span>
+                <span>SKYNET.</span>
               </div>
               <p class="footer__sub">
                 Mua Hosting giá rẻ khởi chạy ngay dự án của bạn với mức chi phí
@@ -127,7 +127,7 @@
           </div>
           <div class="col-12 col-lg-2">
             <div class="footer__item">
-              <h3>Về tech.</h3>
+              <h3>Về SKYNET.</h3>
               <ul>
                 <li><span>Sứ mệnh</span></li>
                 <li><span>Giá trị cốt lỏi</span></li>
@@ -149,7 +149,7 @@
               <h3>Liên hệ</h3>
               <ul>
                 <li><span>Phone : 099******</span></li>
-                <li><span>Mail : tech@gmail.com</span></li>
+                <li><span>Mail : SKYNET@gmail.com</span></li>
                 <li>
                   <span
                     >Văn phòng : 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT</span
@@ -160,7 +160,7 @@
           </div>
         </div>
         <div class="line"></div>
-        <p>© 2024 tech. All Rights Reserved</p>
+        <p>© 2024 SKYNET. All Rights Reserved</p>
       </div>
     </footer>
   </body>
@@ -212,7 +212,10 @@
         postLink.appendChild(titleElement);
 
         const spanElement = document.createElement("span");
-        spanElement.textContent = post.timeline;
+        const timelineDate = new Date(post.timeline);
+        const formattedTimeline = `${timelineDate.getDate()}/${timelineDate.getMonth() + 1}/${timelineDate.getFullYear()} ${timelineDate.getHours()}:${timelineDate.getMinutes()}:${timelineDate.getSeconds()}`;
+
+        spanElement.textContent = formattedTimeline;
         newsItem.appendChild(spanElement);
 
         newsItem.appendChild(postLink);

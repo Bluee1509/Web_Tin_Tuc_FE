@@ -46,7 +46,7 @@
           class="sidebar-brand d-flex align-items-center justify-content-center"
           href="index.html"
         >
-          <div class="sidebar-brand-text mx-3">tech.</div>
+          <div class="sidebar-brand-text mx-3">SKYNET</div>
         </a>
 
         <!-- Divider -->
@@ -165,7 +165,7 @@
               aria-expanded="false"
             >
               <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                >Vo Anh Hien</span
+                ></span
               >
               <img
                 class="img-profile rounded-circle"
@@ -174,21 +174,10 @@
             </a>
             <!-- Dropdown - User Information -->
             <div
-              class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+              class="dropdown-menu dropdown-menu-info dropdown-menu-right shadow animated--grow-in"
               aria-labelledby="userDropdown"
             >
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-              </a>
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                Settings
-              </a>
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                Activity Log
-              </a>
+              
               <div class="dropdown-divider"></div>
               <a
                 class="dropdown-item"
@@ -317,6 +306,42 @@
       referrerpolicy="origin"
     ></script>
     <script>
+      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      if (userInfo) {
+ 
+    document.querySelector('.text-gray-600.small').textContent = userInfo.name;
+
+    var dropdownMenu = document.querySelector('.dropdown-menu-info');
+    console.log(dropdownMenu)
+    dropdownMenu.innerHTML = '';
+
+    var accessRightItem = document.createElement('a');
+    accessRightItem.classList.add('dropdown-item');
+    accessRightItem.innerHTML = `
+        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> ${userInfo.accessRight}
+    `;
+    dropdownMenu.appendChild(accessRightItem);
+
+    var roleItem = document.createElement('a');
+    roleItem.classList.add('dropdown-item');
+    roleItem.innerHTML = `
+        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> ${userInfo.role}
+    `;
+    dropdownMenu.appendChild(roleItem);
+
+    var logoutItem = document.createElement('a');
+    logoutItem.classList.add('dropdown-item');
+    logoutItem.href = '#';
+    logoutItem.id = 'logoutBtn';
+    logoutItem.innerHTML = `
+        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+        Logout
+    `;
+    dropdownMenu.appendChild(logoutItem);
+}
+
+    </script>
+    <script>
       document.getElementById("logoutBtn").addEventListener("click", function() {
   Swal.fire({
     title: "Bạn chắc chắn muốn đăng xuất?",
@@ -337,24 +362,18 @@
 
     </script>
     <script>
-      // Kiểm tra nếu không có userInfo trong localStorage
       if (!localStorage.getItem("userInfo")) {
-        // Chuyển hướng đến trang đăng nhập
         window.location.href = "login.html";
       } else {
-        // Lấy thông tin người dùng từ localStorage
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         const accessRight = userInfo.accessRight;
         const role = userInfo.role;
     
-        // Kiểm tra vai trò của người dùng và chuyển hướng tương ứng
         if (role === "admin2") {
-          // Nếu là news editor, chỉ cho phép vào các trang admin
           if (
             window.location.href !== "http://127.0.0.1:8081/admin/add-post.html" &&
             window.location.href !== "http://127.0.0.1:8081/admin/index.html"
           ) {
-            // Thông báo và chuyển hướng
             Swal.fire({
               icon: "error",
               title: "Truy cập bị từ chối",

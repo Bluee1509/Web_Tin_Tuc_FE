@@ -11321,17 +11321,6 @@ a:focus {
   background-size: cover;
 }
 
-.bg-register-image {
-  background: url("../img/banner.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
-.bg-password-image {
-  background: url("../img/banner.jpg");
-  background-position: center;
-  background-size: cover;
-}
 
 form.user .custom-checkbox.small label {
   line-height: 1.5rem;

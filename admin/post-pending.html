@@ -35,7 +35,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3">tech.</div>
+                <div class="sidebar-brand-text mx-3">SKYNET</div>
             </a>
 
             <!-- Divider -->
@@ -155,7 +155,7 @@
                 aria-expanded="false"
               >
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Vo Anh Hien</span
+                  ></span
                 >
                 <img
                   class="img-profile rounded-circle"
@@ -164,21 +164,9 @@
               </a>
               <!-- Dropdown - User Information -->
               <div
-                class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                class="dropdown-menu dropdown-menu-info dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown"
               >
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
                 <a
                   class="dropdown-item"
@@ -304,6 +292,42 @@
     <script src="./js/demo/chart-area-demo.js"></script>
     <script src="./js/demo/chart-pie-demo.js"></script>
     <script>
+      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      if (userInfo) {
+ 
+    document.querySelector('.text-gray-600.small').textContent = userInfo.name;
+
+    var dropdownMenu = document.querySelector('.dropdown-menu-info');
+    console.log(dropdownMenu)
+    dropdownMenu.innerHTML = '';
+
+    var accessRightItem = document.createElement('a');
+    accessRightItem.classList.add('dropdown-item');
+    accessRightItem.innerHTML = `
+        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> ${userInfo.accessRight}
+    `;
+    dropdownMenu.appendChild(accessRightItem);
+
+    var roleItem = document.createElement('a');
+    roleItem.classList.add('dropdown-item');
+    roleItem.innerHTML = `
+        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> ${userInfo.role}
+    `;
+    dropdownMenu.appendChild(roleItem);
+
+    var logoutItem = document.createElement('a');
+    logoutItem.classList.add('dropdown-item');
+    logoutItem.href = '#';
+    logoutItem.id = 'logoutBtn';
+    logoutItem.innerHTML = `
+        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+        Logout
+    `;
+    dropdownMenu.appendChild(logoutItem);
+}
+
+    </script>
+    <script>
         document.getElementById("logoutBtn").addEventListener("click", function() {
     Swal.fire({
       title: "Bạn chắc chắn muốn đăng xuất?",
@@ -361,6 +385,11 @@
       </script>
       
     <script>
+      function formatTimeline(timeline) {
+    const timelineDate = new Date(timeline);
+    const formattedTimeline = `${timelineDate.getDate()}/${timelineDate.getMonth() + 1}/${timelineDate.getFullYear()} ${timelineDate.getHours()}:${timelineDate.getMinutes()}:${timelineDate.getSeconds()}`;
+    return formattedTimeline;
+}
         function loadData(pageNumber, pageSize) {
             fetch(`http://localhost:8080/api/post/getByStatus?status=pending&pageNumber=${pageNumber}&pageSize=${pageSize}`)
                 .then(response => response.json())
@@ -373,11 +402,11 @@
                             row.innerHTML = `
                         <td>${post.idPost}</td>
                         <td>${post.title}</td>
-                        <td>${post.timeline}</td>
+                        <td>${formatTimeline(post.timeline)}</td>
                         <td>${post.idAccount}</td>
-                        <td>
-        <button class="btn btn-primary approve-btn" data-id="${post.idPost}">Duyệt bài</button>
-        <button class="btn btn-danger reject-btn" data-id="${post.idPost}">Từ chối bài</button>
+                        <td class="d-flex align-items-center">
+        <button class="btn btn-primary approve-btn" style="text-wrap: nowrap; margin-right: 10px" data-id="${post.idPost}">Duyệt bài</button>
+        <button class="btn btn-danger reject-btn" style="text-wrap: nowrap" data-id="${post.idPost}">Từ chối bài</button>
     </td>
         </td>
                     `;
@@ -387,7 +416,6 @@
                         postTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No data available</td></tr>';
                     }
 
-                    // Update pagination
                     updatePagination(pageNumber, pageSize, data.total);
                 })
                 .catch(error => {
@@ -405,7 +433,6 @@
             const paginationContainer = document.querySelector('.pagination');
             paginationContainer.innerHTML = '';
 
-            // Tạo nút 'Previous'
             const previousButton = document.createElement('li');
             previousButton.classList.add('page-item');
             if (currentPage === 1) {
@@ -439,7 +466,6 @@
             }
 
 
-            // Tạo nút 'Next'
             const nextButton = document.createElement('li');
             nextButton.classList.add('page-item');
             if (currentPage === totalPages) {
